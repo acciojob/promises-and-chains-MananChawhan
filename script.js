@@ -5,7 +5,7 @@ document.getElementById("voteForm").addEventListener("submit", function (event) 
   const ageInput = document.getElementById("age").value.trim();
 
   if (nameInput === "" || ageInput === "") {
-    alert("Please enter valid details.");
+    alert("Please enter valid details");
     return;
   }
 
