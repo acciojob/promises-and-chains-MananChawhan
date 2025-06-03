@@ -1,10 +1,10 @@
-document.getElementById('voteForm').addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevent default form submission
+document.getElementById('voteForm').addEventListener('submit', function (event) {
+  event.preventDefault();
 
   const name = document.getElementById('name').value.trim();
   const age = document.getElementById('age').value.trim();
 
-  if (!name || !age) {
+  if (name === "" || age === "") {
     alert("Please enter valid details.");
     return;
   }
@@ -13,17 +13,17 @@ document.getElementById('voteForm').addEventListener('submit', function(event) {
 
   new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (ageNum > 18) {
-        resolve();
+      if (ageNum >= 18) {
+        resolve(name);
       } else {
-        reject();
+        reject(name);
       }
-    }, 4000);
+    }, 4000); // 4 seconds delay
   })
-  .then(() => {
-    alert(`Welcome, ${name}. You can vote.`);
-  })
-  .catch(() => {
-    alert(`Oh sorry ${name}. You aren't old enough.`);
-  });
+    .then((name) => {
+      alert(`Welcome, ${name}. You can vote.`);
+    })
+    .catch((name) => {
+      alert(`Oh sorry ${name}. You aren't old enough.`);
+    });
 });
